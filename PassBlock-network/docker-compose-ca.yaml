@@ -1,0 +1,50 @@
+version: '2.1'
+
+networks:
+   passblock-blockchain:
+
+volumes:
+   pgdata:
+
+services:
+  ca-database:
+    image: postgres:12.3-alpine
+    container_name: ca-database
+    environment:
+      - POSTGRES_PASSWORD=passblock@@123
+      - POSTGRES_USER=fabric
+      - POSTGRES_DB=passblock_ca_db
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    ports:
+      - 5432:5432
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - passblock-blockchain
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  passblock-ca-server:
+    image: hyperledger/fabric-ca:1.4.9
+    container_name: ca.passblock.technology
+    hostname: ca.passblock.technology
+    ports:
+      - "7054:7054"
+    environment:
+      - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
+      - FABRIC_CA_SERVER_TLS_ENABLED=true
+      - FABRIC_CA_SERVER_CA_NAME=passblock-ca
+      - FABRIC_CA_SERVER_DB_TYPE=postgres
+      - FABRIC_CA_SERVER_DB_DATASOURCE=host=ca-database port=5432 user=fabric password=PassBlock@@123 dbname=passblock_ca_db sslmode=disable
+      - FABRIC_CA_SERVER_CSR_HOSTS=passblock-ca-server, localhost, ca.passblock.technology
+    networks:
+      - passblock-blockchain
+    depends_on:
+      ca-database:
+        condition: service_healthy
+    volumes:
+      - "./passblock-ca-server:/etc/hyperledger/fabric-ca-server"
+    command: sh -c 'fabric-ca-server start -b admin:adminpw'
