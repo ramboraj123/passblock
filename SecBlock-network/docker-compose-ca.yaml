@@ -27,7 +27,7 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
 
-  secblock-ca-server:
+  ca.secblock.technology:
     image: hyperledger/fabric-ca:1.4.9
     container_name: ca.secblock.technology
     hostname: ca.secblock.technology
@@ -38,7 +38,7 @@ services:
       - FABRIC_CA_SERVER_TLS_ENABLED=true
       - FABRIC_CA_SERVER_CA_NAME=secblock-ca
       - FABRIC_CA_SERVER_DB_TYPE=postgres
-      - FABRIC_CA_SERVER_DB_DATASOURCE=host=ca-database port=5432 user=fabric password=SecBlock@@123 dbname=secblock_ca_db sslmode=disable
+      - FABRIC_CA_SERVER_DB_DATASOURCE=host=ca-database port=5432 user=fabric password=secblock@@123 dbname=secblock_ca_db sslmode=disable
       - FABRIC_CA_SERVER_CSR_HOSTS=secblock-ca-server, localhost, ca.secblock.technology
     networks:
       - secblock-blockchain
