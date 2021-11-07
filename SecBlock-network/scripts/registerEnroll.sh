@@ -66,7 +66,7 @@ function createSecblock() {
 
   infoln "Generating the peer0-tls certificates"
   set -x
-  fabric-ca-client enroll -u https://peer0:peer0pw@localhost:7054 --caname secblock-ca -M ${PWD}/organizations/peerOrganizations/secblock.technology/peers/secblock.technology/tls --enrollment.profile tls --csr.hosts peer0.secblock.technology --csr.hosts localhost --tls.certfiles ${PWD}/secblock-ca-server/tls-cert.pem
+  fabric-ca-client enroll -u https://peer0:peer0pw@localhost:7054 --caname secblock-ca -M ${PWD}/organizations/peerOrganizations/secblock.technology/peers/peer0.secblock.technology/tls --enrollment.profile tls --csr.hosts peer0.secblock.technology --csr.hosts localhost --tls.certfiles ${PWD}/secblock-ca-server/tls-cert.pem
   { set +x; } 2>/dev/null
 
   cp ${PWD}/organizations/peerOrganizations/secblock.technology/peers/peer0.secblock.technology/tls/tlscacerts/* ${PWD}/organizations/peerOrganizations/secblock.technology/peers/peer0.secblock.technology/tls/ca.crt
