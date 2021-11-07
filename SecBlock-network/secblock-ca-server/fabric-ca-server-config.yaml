@@ -307,7 +307,7 @@
  #     CA certificates though it can still issue end entity certificates.
  ###########################################################################
  csr:
-    cn: passblock
+    cn: secblock
     keyrequest:
       algo: ecdsa
       size: 256
@@ -318,7 +318,7 @@
          O: Hyperledger
          OU: Fabric
     hosts:
-      - passblock-ca-server
+      - secblock-ca-server
       - localhost
     ca:
        expiry: 131400h

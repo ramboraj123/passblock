@@ -1,7 +1,7 @@
 version: '2.1'
 
 networks:
-   passblock-blockchain:
+   secblock-blockchain:
 
 volumes:
    pgdata:
@@ -11,9 +11,9 @@ services:
     image: postgres:12.3-alpine
     container_name: ca-database
     environment:
-      - POSTGRES_PASSWORD=passblock@@123
+      - POSTGRES_PASSWORD=secblock@@123
       - POSTGRES_USER=fabric
-      - POSTGRES_DB=passblock_ca_db
+      - POSTGRES_DB=secblock_ca_db
       - PGDATA=/var/lib/postgresql/data/pgdata
     ports:
       - 5432:5432
@@ -23,28 +23,28 @@ services:
       timeout: 5s
       retries: 5
     networks:
-      - passblock-blockchain
+      - secblock-blockchain
     volumes:
       - pgdata:/var/lib/postgresql/data
 
-  passblock-ca-server:
+  secblock-ca-server:
     image: hyperledger/fabric-ca:1.4.9
-    container_name: ca.passblock.technology
-    hostname: ca.passblock.technology
+    container_name: ca.secblock.technology
+    hostname: ca.secblock.technology
     ports:
       - "7054:7054"
     environment:
       - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
       - FABRIC_CA_SERVER_TLS_ENABLED=true
-      - FABRIC_CA_SERVER_CA_NAME=passblock-ca
+      - FABRIC_CA_SERVER_CA_NAME=secblock-ca
       - FABRIC_CA_SERVER_DB_TYPE=postgres
-      - FABRIC_CA_SERVER_DB_DATASOURCE=host=ca-database port=5432 user=fabric password=PassBlock@@123 dbname=passblock_ca_db sslmode=disable
-      - FABRIC_CA_SERVER_CSR_HOSTS=passblock-ca-server, localhost, ca.passblock.technology
+      - FABRIC_CA_SERVER_DB_DATASOURCE=host=ca-database port=5432 user=fabric password=SecBlock@@123 dbname=secblock_ca_db sslmode=disable
+      - FABRIC_CA_SERVER_CSR_HOSTS=secblock-ca-server, localhost, ca.secblock.technology
     networks:
-      - passblock-blockchain
+      - secblock-blockchain
     depends_on:
       ca-database:
         condition: service_healthy
     volumes:
-      - "./passblock-ca-server:/etc/hyperledger/fabric-ca-server"
+      - "./secblock-ca-server:/etc/hyperledger/fabric-ca-server"
     command: sh -c 'fabric-ca-server start -b admin:adminpw'
