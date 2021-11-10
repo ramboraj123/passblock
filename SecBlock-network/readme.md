@@ -1,6 +1,6 @@
-# PassBlock network 
+# secblock network 
 
-Clean PassBlock Network to test the modification in network script
+Clean secblock Network to test the modification in network script
 
 
 ./clean.sh
@@ -9,7 +9,7 @@ Clean PassBlock Network to test the modification in network script
 Now start the network , CA server , CA database , 5 orderers and 2 peers container will be up
 
 
-Start PassBlock Network
+Start secblock Network
 
 
 ./network.sh

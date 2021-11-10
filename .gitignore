@@ -1,0 +1,14 @@
+*.pem
+*.txt
+*_sk
+Issuer*
+organizations
+.DS_Store
+node_modules
+wallet
+build
+*.tar.gz
+*.tx
+*.block
+*.json
+vendor
