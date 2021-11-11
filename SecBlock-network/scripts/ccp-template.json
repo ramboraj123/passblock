@@ -1,0 +1,60 @@
+{
+    "name": "${ORG}-network",
+    "version": "1.0.0",
+    "client": {
+        "organization": "${ORG}",
+        "connection": {
+            "timeout": {
+                "peer": {
+                    "endorser": "300"
+                }
+            }
+        }
+    },
+    "organizations": {
+        "${ORG}": {
+            "mspid": "${ORG}MSP",
+            "peers": [
+                "peer0.secblock.technology",
+                "peer1.secblock.technology"
+            ],
+            "certificateAuthorities": [
+                "ca.secblock.technology"
+            ]
+        }
+    },
+    "peers": {
+        "peer0.secblock.technology": {
+            "url": "grpcs://peer0.secblock.technology:${P0PORT}",
+            "tlsCACerts": {
+                "pem": "${PEERPEM}"
+            },
+            "grpcOptions": {
+                "ssl-target-name-override": "peer0.secblock.technology",
+                "hostnameOverride": "peer0.secblock.technology"
+            }
+        },
+        "peer1.secblock.technology": {
+            "url": "grpcs://peer1.secblock.technology:${P1PORT}",
+            "tlsCACerts": {
+                "pem": "${PEERPEM}"
+            },
+            "grpcOptions": {
+                "ssl-target-name-override": "peer1.secblock.technology",
+                "hostnameOverride": "peer1.secblock.technology"
+            }
+        }
+    },
+    "certificateAuthorities": {
+        "ca.busy.technology": {
+            "url": "https://ca.secblock.technology:${CAPORT}",
+            "caName": "secblock-ca",
+            "tlsCACerts": {
+                "pem": ["${CAPEM}"]
+            },
+            "httpOptions": {
+                "verify": false
+            }
+        }
+    }
+}

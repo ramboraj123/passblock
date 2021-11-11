@@ -22,4 +22,9 @@ module.exports = (server) => {
     controllers.users.register
   );
 
+  server.post(
+    "/login",
+    controllers.users.login
+  );
+
 }
