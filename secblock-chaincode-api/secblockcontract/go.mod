@@ -1,4 +1,4 @@
-module secblockcontract
+module examplecc
 
 go 1.14
 
