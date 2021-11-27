@@ -3,6 +3,7 @@ const config = require("./config");
 const xss = require("xss-clean");
 const helmet = require("helmet");
 const mongoSanitize = require("express-mongo-sanitize");
+const Root = require("./app/controllers/users/root");
 
 const restify = require("restify"),
   server = restify.createServer({
@@ -32,11 +33,15 @@ server.use(mongoSanitize());
 
 server.use(restify.plugins.queryParser({ mapParams: false }));
 
+
+
 server.listen(config.PORT, async () => {
-  mongoose.connect(config.MONGODB_URI, {
+  await mongoose.connect(config.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });
+
+  //await Root();
 });
 
 

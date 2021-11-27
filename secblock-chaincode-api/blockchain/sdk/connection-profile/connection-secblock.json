@@ -1,0 +1,60 @@
+{
+    "name": "secblock-network",
+    "version": "1.0.0",
+    "client": {
+        "organization": "secblock",
+        "connection": {
+            "timeout": {
+                "peer": {
+                    "endorser": "300"
+                }
+            }
+        }
+    },
+    "organizations": {
+        "secblock": {
+            "mspid": "secblockMSP",
+            "peers": [
+                "peer0.secblock.technology",
+                "peer1.secblock.technology"
+            ],
+            "certificateAuthorities": [
+                "ca.secblock.technology"
+            ]
+        }
+    },
+    "peers": {
+        "peer0.secblock.technology": {
+            "url": "grpcs://peer0.secblock.technology:7051",
+            "tlsCACerts": {
+                "pem": ""
+            },
+            "grpcOptions": {
+                "ssl-target-name-override": "peer0.secblock.technology",
+                "hostnameOverride": "peer0.secblock.technology"
+            }
+        },
+        "peer1.secblock.technology": {
+            "url": "grpcs://peer1.secblock.technology:9051",
+            "tlsCACerts": {
+                "pem": ""
+            },
+            "grpcOptions": {
+                "ssl-target-name-override": "peer1.secblock.technology",
+                "hostnameOverride": "peer1.secblock.technology"
+            }
+        }
+    },
+    "certificateAuthorities": {
+        "ca.busy.technology": {
+            "url": "https://ca.secblock.technology:9051",
+            "caName": "secblock-ca",
+            "tlsCACerts": {
+                "pem": ["-----BEGIN CERTIFICATE-----\nMIICBjCCAa2gAwIBAgIUBy5p+u74gyt5v5m46QXygoRepp8wCgYIKoZIzj0EAwIw\nYDELMAkGA1UEBhMCVVMxFzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQK\nEwtIeXBlcmxlZGdlcjEPMA0GA1UECxMGRmFicmljMREwDwYDVQQDEwhzZWNibG9j\nazAeFw0yMTExMjcxOTI0MDBaFw0zNjExMjMxOTI0MDBaMGAxCzAJBgNVBAYTAlVT\nMRcwFQYDVQQIEw5Ob3J0aCBDYXJvbGluYTEUMBIGA1UEChMLSHlwZXJsZWRnZXIx\nDzANBgNVBAsTBkZhYnJpYzERMA8GA1UEAxMIc2VjYmxvY2swWTATBgcqhkjOPQIB\nBggqhkjOPQMBBwNCAARQYaWj80e+OrlgG+kxqaHVdBCQksNSmlCQ6GFZoco/tsS5\ny6MHBeerHD+xGCuHamg9YdKH6YqLLq7cSEaLIeaso0UwQzAOBgNVHQ8BAf8EBAMC\nAQYwEgYDVR0TAQH/BAgwBgEB/wIBATAdBgNVHQ4EFgQUwhHgrygiKpmlwKoTVnrN\n+gYP2nAwCgYIKoZIzj0EAwIDRwAwRAIgL/KaMi3VAa2dz9dj2Va8AKuxzhAq66NO\nmdgwGhSocXACIBNiAPX1MbYN1B2wY2lZLHyDhWAfe3HlmySWytBosumz\n-----END CERTIFICATE-----\n"]
+            },
+            "httpOptions": {
+                "verify": false
+            }
+        }
+    }
+}

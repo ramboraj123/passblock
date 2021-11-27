@@ -8,12 +8,12 @@ import (
 )
 
 func main() {
-	example := new(SecBlock)
-	example.UnknownTransaction = UnknownTransactionHandler
-	example.Name = "example"
+	secblock := new(SecBlock)
+	secblock.UnknownTransaction = UnknownTransactionHandler
+	secblock.Name = "Secblock"
 
-	cc, err := contractapi.NewChaincode(example)
-	cc.DefaultContract = example.GetName()
+	cc, err := contractapi.NewChaincode(secblock)
+	cc.DefaultContract = secblock.GetName()
 
 	if err != nil {
 		panic(err.Error())
