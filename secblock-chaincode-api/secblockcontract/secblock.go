@@ -42,7 +42,7 @@ func (sb *SecBlock) CreateUser(ctx contractapi.TransactionContextInterface) Resp
 	secretListAsBytes, _ := json.Marshal(secretList)
 	ctx.GetStub().PutState(username, secretListAsBytes)
 
-	response.Message = fmt.Sprintf("User registration successful")
+	response.Message = fmt.Sprintf("User with id %s registered", username)
 	logger.Info(response.Message)
 	response.Success = true
 	return response

@@ -46,11 +46,11 @@
         }
     },
     "certificateAuthorities": {
-        "ca.busy.technology": {
-            "url": "https://ca.secblock.technology:9051",
+        "ca.secblock.technology": {
+            "url": "https://ca.secblock.technology:7054",
             "caName": "secblock-ca",
             "tlsCACerts": {
-                "pem": ["-----BEGIN CERTIFICATE-----\nMIICBjCCAa2gAwIBAgIUBy5p+u74gyt5v5m46QXygoRepp8wCgYIKoZIzj0EAwIw\nYDELMAkGA1UEBhMCVVMxFzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQK\nEwtIeXBlcmxlZGdlcjEPMA0GA1UECxMGRmFicmljMREwDwYDVQQDEwhzZWNibG9j\nazAeFw0yMTExMjcxOTI0MDBaFw0zNjExMjMxOTI0MDBaMGAxCzAJBgNVBAYTAlVT\nMRcwFQYDVQQIEw5Ob3J0aCBDYXJvbGluYTEUMBIGA1UEChMLSHlwZXJsZWRnZXIx\nDzANBgNVBAsTBkZhYnJpYzERMA8GA1UEAxMIc2VjYmxvY2swWTATBgcqhkjOPQIB\nBggqhkjOPQMBBwNCAARQYaWj80e+OrlgG+kxqaHVdBCQksNSmlCQ6GFZoco/tsS5\ny6MHBeerHD+xGCuHamg9YdKH6YqLLq7cSEaLIeaso0UwQzAOBgNVHQ8BAf8EBAMC\nAQYwEgYDVR0TAQH/BAgwBgEB/wIBATAdBgNVHQ4EFgQUwhHgrygiKpmlwKoTVnrN\n+gYP2nAwCgYIKoZIzj0EAwIDRwAwRAIgL/KaMi3VAa2dz9dj2Va8AKuxzhAq66NO\nmdgwGhSocXACIBNiAPX1MbYN1B2wY2lZLHyDhWAfe3HlmySWytBosumz\n-----END CERTIFICATE-----\n"]
+                "pem": ["-----BEGIN CERTIFICATE-----\nMIICBjCCAa2gAwIBAgIUaG0lPW1XlhXxB/o+NTWziz6ccUQwCgYIKoZIzj0EAwIw\nYDELMAkGA1UEBhMCVVMxFzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQK\nEwtIeXBlcmxlZGdlcjEPMA0GA1UECxMGRmFicmljMREwDwYDVQQDEwhzZWNibG9j\nazAeFw0yMTExMjgwMjE5MDBaFw0zNjExMjQwMjE5MDBaMGAxCzAJBgNVBAYTAlVT\nMRcwFQYDVQQIEw5Ob3J0aCBDYXJvbGluYTEUMBIGA1UEChMLSHlwZXJsZWRnZXIx\nDzANBgNVBAsTBkZhYnJpYzERMA8GA1UEAxMIc2VjYmxvY2swWTATBgcqhkjOPQIB\nBggqhkjOPQMBBwNCAASIhUPfeF1EiuXvypBs/Ezy0kUSguT9/lSvBIO4vh4KV4xS\nl31yDZlSMiPqYKsByWfOnreKFbi2VPjr89VA0Ix/o0UwQzAOBgNVHQ8BAf8EBAMC\nAQYwEgYDVR0TAQH/BAgwBgEB/wIBATAdBgNVHQ4EFgQU9xNuMx+qZjrVmL0PSDIB\nIAacszAwCgYIKoZIzj0EAwIDRwAwRAIgTTWA66sr4Y/eQwFYyKf4gBfjvRraXDR7\nYOueAlAlb7QCID/eW3cIiC7F/+IIiE3oLeaUPAIwngBGrpgBiD/3bty4\n-----END CERTIFICATE-----\n"]
             },
             "httpOptions": {
                 "verify": false
