@@ -32,8 +32,8 @@ registerUsers = async (userId) => {
         //chaincodeResponse: response,
         seed: mnemonic,
       };
-      //console.log("OUTPUT", output);
-      return output;
+      console.log("OUTPUT", output);
+      //return output;
     } else {
       //   return sendResponse(res, false, 200, txId, 'User already exists');
       console.log("error");
@@ -47,4 +47,4 @@ registerUsers = async (userId) => {
 
 //module.exports = registerUsers;
 
-registerUsers("cjvbnwkjvb4837");
+registerUsers("cnkwekjcvnk893759");

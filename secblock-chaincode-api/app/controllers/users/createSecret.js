@@ -7,8 +7,9 @@ module.exports = async (req, res, next) => {
   try {
     const vaulToken = req.body.token,
       secretLable = req.body.lable,
-      key = req.body.key,
-      userId = req.body.userId;
+      userName = req.body.userName,
+      password = req.body.password;
+    userId = req.body.userId;
 
     const user = await User.findOne({
       userId: userId,
@@ -24,6 +25,11 @@ module.exports = async (req, res, next) => {
           message: "token is incorrect",
         });
       }
+
+      const key = {
+        userName: userName,
+        password: password,
+      };
 
       var data = JSON.stringify({
         data: key,

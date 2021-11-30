@@ -36,7 +36,13 @@ module.exports = (server) => {
 
   server.post(
     "/createSecret",
-    middleware.utility.required(["userId", "token", "lable", "key"]),
+    middleware.utility.required([
+      "userId",
+      "token",
+      "lable",
+      "userName",
+      "password",
+    ]),
     controllers.users.createSecret
   );
 
