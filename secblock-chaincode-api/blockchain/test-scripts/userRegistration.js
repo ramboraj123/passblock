@@ -4,7 +4,7 @@ const bip39 = require("bip39");
 
 //const sendResponse = require('../middleware/requestHandler');
 
-module.exports = async (userId) => {
+registerUsers = async (userId) => {
   try {
     const userData = {
       userId: userId,
@@ -47,4 +47,4 @@ module.exports = async (userId) => {
 
 //module.exports = registerUsers;
 
-//registerUsers("cjvbnwkjvb4837");
+registerUsers("cjvbnwkjvb4837");

@@ -13,8 +13,11 @@ const UserSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true,
-    trim: true,
-  }
+  },
+  token: {
+    type: String,
+    required: true,
+  },
 });
 
 UserSchema.plugin(timeStamp);

@@ -56,7 +56,7 @@ module.exports = async (req, res, next) => {
           renewable: false,
         });
 
-        const mnemonic = bip39.generateMnemonic();
+        //const mnemonic = bip39.generateMnemonic();
         const salt = await bcrypt.genSaltSync(saltRounds);
         const hash = await bcrypt.hashSync(password, salt);
         console.log("HASH", hash);
@@ -77,6 +77,8 @@ module.exports = async (req, res, next) => {
             const token = response.data.auth.client_token;
             console.log("TOKEN", token);
 
+            const tokenHash = await bcrypt.hashSync(token, salt);
+
             const mail_response = await Mail(
               email,
               `Your secret token is: ${token}`
@@ -92,6 +94,7 @@ module.exports = async (req, res, next) => {
               email: email,
               userId: userId,
               password: hash,
+              token: tokenHash,
             });
 
             await users

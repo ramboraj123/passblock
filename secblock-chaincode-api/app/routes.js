@@ -45,4 +45,10 @@ module.exports = (server) => {
     middleware.utility.required(["userId", "token", "lable"]),
     controllers.users.getSecret
   );
+
+  server.post(
+    "/getUsersSecret",
+    middleware.utility.required(["userId"]),
+    controllers.users.getUsersSecret
+  );
 };

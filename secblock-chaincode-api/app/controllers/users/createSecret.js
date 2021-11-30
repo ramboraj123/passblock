@@ -1,5 +1,6 @@
 const User = require("../../models/Users");
-// const bcrypt = require("bcrypt");
+const Secret = require("../../models/secret");
+const bcrypt = require("bcrypt");
 var axios = require("axios");
 
 module.exports = async (req, res, next) => {
@@ -14,6 +15,16 @@ module.exports = async (req, res, next) => {
     });
     console.log("USER DATA", user);
     if (user) {
+      const result = bcrypt.compareSync(vaulToken, user.token);
+
+      if (result == false) {
+        console.log("token is incorrect.");
+        return res.send(400, {
+          status: false,
+          message: "token is incorrect",
+        });
+      }
+
       var data = JSON.stringify({
         data: key,
       });
@@ -32,8 +43,21 @@ module.exports = async (req, res, next) => {
         data: data,
       };
       axios(config)
-        .then(function (response) {
+        .then(async function (response) {
           console.log(JSON.stringify(response.data));
+          const secret = await new Secret({
+            userId: userId,
+            lable: secretLable,
+          });
+          await secret
+            .save()
+            .then((result, error) => {
+              console.log("Secret stored");
+            })
+            .catch((error) => {
+              console.log("ERROR DB", error);
+            });
+
           return res.send(201, {
             status: true,
             message:
@@ -45,6 +69,7 @@ module.exports = async (req, res, next) => {
           console.log("ERROR", error);
           return res.send(404, {
             status: false,
+            error: error,
             message: "User's token is expired.",
           });
         });
@@ -52,7 +77,7 @@ module.exports = async (req, res, next) => {
       console.log("User data not found in users table.");
       return res.send(404, {
         status: false,
-        message: "User does not exist",
+        message: "User does not exist.",
       });
     }
   } catch (exception) {
